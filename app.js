@@ -1,4 +1,4 @@
-// 1. Pega aquí tu configuración de Firebase
+// 1. Configuración de Firebase (Reemplaza con TUS credenciales)
 const firebaseConfig = {
     apiKey: "TU_API_KEY",
     authDomain: "TU_PROYECTO.firebaseapp.com",
@@ -23,7 +23,7 @@ if (sorteoForm) {
         const equipo = document.getElementById('equipo').value;
         const grupo = document.getElementById('grupo').value;
 
-        // Crear un ID único para el jugador basado en la fecha
+        // Crear un ID único para el jugador basado en la fecha exacta
         const jugadorId = Date.now();
 
         // Guardar en la base de datos bajo el nodo del grupo correspondiente
@@ -38,6 +38,7 @@ if (sorteoForm) {
             sorteoForm.reset();
         }).catch((error) => {
             console.error("Error al guardar: ", error);
+            alert("Hubo un error al guardar. Revisa la consola.");
         });
     });
 }
@@ -95,7 +96,31 @@ if (gruposContainer) {
                 gruposContainer.innerHTML += htmlGrupo;
             });
         } else {
-            gruposContainer.innerHTML = '<p>El sorteo aún no ha comenzado.</p>';
+            gruposContainer.innerHTML = '<p>El sorteo aún no ha comenzado. Esperando asignaciones...</p>';
+        }
+    });
+}
+
+// --- LÓGICA PARA REINICIAR LA BASE DE DATOS ---
+const btnReset = document.getElementById('btn-reset');
+if (btnReset) {
+    btnReset.addEventListener('click', () => {
+        // Ventana de confirmación doble para evitar accidentes críticos
+        const seguro = confirm("¿Estás seguro de que quieres borrar TODOS los datos del torneo?");
+        
+        if (seguro) {
+            const reconfirmar = confirm("Esta acción NO se puede deshacer. ¿Continuar y limpiar la base de datos?");
+            if (reconfirmar) {
+                // Eliminar el nodo completo de grupos
+                db.ref('torneo/grupos').remove()
+                    .then(() => {
+                        alert("¡Base de datos en cero! Lista para empezar de nuevo.");
+                    })
+                    .catch((error) => {
+                        console.error("Error al borrar los datos: ", error);
+                        alert("Error al intentar reiniciar. Revisa la consola.");
+                    });
+            }
         }
     });
 }
