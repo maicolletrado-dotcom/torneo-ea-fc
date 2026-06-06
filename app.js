@@ -1,12 +1,12 @@
 // 1. Configuración de Firebase (Reemplaza con TUS credenciales)
 const firebaseConfig = {
-    apiKey: "TU_API_KEY",
-    authDomain: "TU_PROYECTO.firebaseapp.com",
-    databaseURL: "https://TU_PROYECTO-default-rtdb.firebaseio.com",
-    projectId: "TU_PROYECTO",
-    storageBucket: "TU_PROYECTO.appspot.com",
-    messagingSenderId: "TU_SENDER_ID",
-    appId: "TU_APP_ID"
+  apiKey: "AIzaSyD5ioipBRwYstM65juLU7qQW4LJVSkAylI",
+  authDomain: "torneo-ea-fc-26.firebaseapp.com",
+  projectId: "torneo-ea-fc-26",
+  storageBucket: "torneo-ea-fc-26.firebasestorage.app",
+  messagingSenderId: "1080927146998",
+  appId: "1:1080927146998:web:48f2b480f7ce138756add7",
+  measurementId: "G-D6EDHSE957"
 };
 
 // 2. Inicializar Firebase
