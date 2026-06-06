@@ -107,3 +107,71 @@ th { background-color: #111; font-size: 0.9rem; }
 .btn-guardar:hover {
     background-color: #ffd700;
 }
+
+/* --- ESTILOS DEL BRACKET (FASE FINAL) --- */
+.bracket-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    overflow-x: auto; /* Permite desplazamiento lateral en celulares */
+    background-color: #111;
+}
+
+.bracket-half {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.lado-b {
+    flex-direction: row-reverse; /* El Lado B se dibuja de derecha a izquierda */
+}
+
+.lado-titulo {
+    position: absolute;
+    color: #555;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    opacity: 0.3;
+    font-size: 2rem;
+}
+
+.fase {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.match {
+    background-color: var(--card-bg);
+    border: 1px solid #444;
+    border-radius: 4px;
+    width: 180px;
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.final-match .match {
+    width: 220px;
+    border: 2px solid var(--gold-accent);
+    transform: scale(1.1);
+}
+
+.team {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    color: white;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+}
+
+.team:last-child { 
+    border-bottom: none; 
+}
+
+.team span { 
+    font-weight: bold; 
+    color: var(--gold-accent); 
+}
