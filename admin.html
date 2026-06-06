@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Sorteo EA FC</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Panel de Administrador</h1>
+        <h2>Sorteo en Vivo</h2>
+    </header>
+
+    <main class="admin-panel">
+        <form id="sorteo-form">
+            <div class="form-group">
+                <label for="nombre">Nombre del Participante:</label>
+                <input type="text" id="nombre" required placeholder="Ej. Juan Pérez">
+            </div>
+
+            <div class="form-group">
+                <label for="equipo">Selección Nacional:</label>
+                <input type="text" id="equipo" required placeholder="Ej. Colombia">
+            </div>
+
+            <div class="form-group">
+                <label for="grupo">Asignar al Grupo:</label>
+                <select id="grupo" required>
+                    <option value="A">Grupo A</option>
+                    <option value="B">Grupo B</option>
+                    <option value="C">Grupo C</option>
+                    <option value="D">Grupo D</option>
+                    <option value="E">Grupo E</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-guardar">Asignar Jugador</button>
+        </form>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
