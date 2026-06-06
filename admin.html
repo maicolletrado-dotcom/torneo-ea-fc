@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Sorteo EA FC</title>
+    <title>Admin - Torneo EA FC</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
@@ -11,38 +11,65 @@
 <body>
     <header>
         <h1>Panel de Administrador</h1>
-        <h2>Sorteo en Vivo</h2>
+        <h2 id="fase-titulo">Fase: Sorteo en Vivo</h2>
     </header>
 
     <main class="admin-panel">
-        <form id="sorteo-form">
-            <div class="form-group">
-                <label for="nombre">Nombre del Participante:</label>
-                <input type="text" id="nombre" required placeholder="Ej. Juan Pérez">
-            </div>
+        <!-- SECCIÓN 1: SORTEO -->
+        <div id="seccion-sorteo">
+            <form id="sorteo-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre del Participante:</label>
+                    <input type="text" id="nombre" required placeholder="Ej. Juan Pérez">
+                </div>
+                <div class="form-group">
+                    <label for="equipo">Selección Nacional:</label>
+                    <input type="text" id="equipo" required placeholder="Ej. Colombia">
+                </div>
+                <div class="form-group">
+                    <label for="grupo">Asignar al Grupo:</label>
+                    <select id="grupo" required>
+                        <option value="A">Grupo A</option>
+                        <option value="B">Grupo B</option>
+                        <option value="C">Grupo C</option>
+                        <option value="D">Grupo D</option>
+                        <option value="E">Grupo E</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-guardar">Asignar Jugador</button>
+            </form>
+            
+            <hr style="border-color: var(--gold-accent); margin: 30px 0;">
+            
+            <!-- Botón para pasar a la siguiente fase -->
+            <button id="btn-iniciar-partidos" style="background-color: #28a745;" class="btn-guardar">⚽ Finalizar Sorteo e Iniciar Partidos</button>
+        </div>
 
-            <div class="form-group">
-                <label for="equipo">Selección Nacional:</label>
-                <input type="text" id="equipo" required placeholder="Ej. Colombia">
-            </div>
+        <!-- SECCIÓN 2: PARTIDOS Y RESULTADOS (Oculta al inicio) -->
+        <div id="seccion-partidos" style="display: none;">
+            <form id="resultado-form">
+                <div class="form-group">
+                    <label>Equipo Local:</label>
+                    <select id="equipo-a" required></select>
+                </div>
+                
+                <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 15px;">
+                    <input type="number" id="goles-a" min="0" required style="width: 70px; text-align: center; font-size: 1.5rem;" placeholder="0">
+                    <span style="font-weight: bold; font-size: 1.2rem;">VS</span>
+                    <input type="number" id="goles-b" min="0" required style="width: 70px; text-align: center; font-size: 1.5rem;" placeholder="0">
+                </div>
 
-            <div class="form-group">
-                <label for="grupo">Asignar al Grupo:</label>
-                <select id="grupo" required>
-                    <option value="A">Grupo A</option>
-                    <option value="B">Grupo B</option>
-                    <option value="C">Grupo C</option>
-                    <option value="D">Grupo D</option>
-                    <option value="E">Grupo E</option>
-                </select>
-            </div>
+                <div class="form-group">
+                    <label>Equipo Visitante:</label>
+                    <select id="equipo-b" required></select>
+                </div>
 
-            <button type="submit" class="btn-guardar">Asignar Jugador</button>
-        </form>
+                <button type="submit" class="btn-guardar">Guardar Resultado</button>
+            </form>
+        </div>
 
-        <button id="btn-reset" style="background-color: #d9534f; margin-top: 30px;" class="btn-guardar">⚠️ Reiniciar Torneo (Borrar Todos los Datos)</button>
+        <button id="btn-reset" style="background-color: #d9534f; margin-top: 40px;" class="btn-guardar">⚠️ Reiniciar Torneo Completo</button>
     </main>
-
     <script src="app.js"></script>
 </body>
 </html>
